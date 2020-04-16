@@ -41,6 +41,7 @@
        >
 
     <ImageButton
+        android:id="@+id/anIbProducto"
      android:background="@android:color/white"
      android:layout_margin="10dp"
      android:src="@drawable/ic_menu_producto"
@@ -67,6 +68,7 @@
        >
 
     <ImageButton
+        android:id="@+id/anIbCliente"
         android:background="@android:color/white"
         android:layout_margin="10dp"
         android:src="@drawable/ic_menu_cliente"
@@ -102,6 +104,7 @@
        >
 
     <ImageButton
+        android:id="@+id/anIbVenta"
         android:background="@android:color/white"
         android:layout_margin="10dp"
         android:src="@drawable/ic_menu_venta"
@@ -127,6 +130,7 @@
        >
 
     <ImageButton
+        android:id="@+id/anIbVentaHistorial"
         android:background="@android:color/white"
         android:layout_margin="10dp"
         android:src="@drawable/ic_men_historial"

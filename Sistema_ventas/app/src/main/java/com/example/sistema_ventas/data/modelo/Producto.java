@@ -1,6 +1,8 @@
 package com.example.sistema_ventas.data.modelo;
 
-public class Producto {
+import java.io.Serializable;
+
+public class Producto implements Serializable {
 
     private int prod_id;
     private String prod_nombre;
