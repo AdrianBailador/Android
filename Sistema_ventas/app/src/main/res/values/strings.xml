@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sistema_ventas</string>
+    <string name="nombre_producto">Producto</string>
+    <string name="nombre_cliente">Cliente</string>
+    <string name="nombre_venta">Venta</string>
+    <string name="nombre_historial">Historial</string>
+</resources>
