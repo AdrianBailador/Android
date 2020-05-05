@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sistema_ventas">
+    
+    
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
 
     <application
         android:allowBackup="true"
@@ -13,7 +18,7 @@
         <activity android:name=".activity.VentaHistorialActivity" />
         <activity android:name=".activity.VentaActivity" />
         <activity android:name=".activity.ClienteActivity" />
-        <activity android:name=".activity.ProductoActivity" />
+        <activity android:name=".activity.ProductoActivity" />i
         <activity android:name=".MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

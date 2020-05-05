@@ -18,7 +18,9 @@ import android.text.TextWatcher;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.Toolbar;
+
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.sistema_ventas.R;
 import com.example.sistema_ventas.adaptador.ProductoItemRecycler;
@@ -78,8 +80,7 @@ public class ProductoActivity extends AppCompatActivity {
 
     }
 
-    private void setSupportActionBar(Toolbar toolbar) {
-    }
+
 
     private void cargarLista(){
         Select.seleccionarProductos(getApplicationContext(),listaProducto,buscador.getText().toString());
@@ -108,7 +109,7 @@ public class ProductoActivity extends AppCompatActivity {
 
 
     void irActivity(boolean bNuevo, Producto itemProducto){
-        Intent intent = new Intent(getApplicationContext(), ProductoActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ProductoDetalleActivity.class);
 
         intent.putExtra("bNuevo", bNuevo);
         intent.putExtra("itemProducto", itemProducto);

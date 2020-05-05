@@ -13,9 +13,9 @@ public class ProductoTabla {
     public static final String CREAR_TABLA_PRODUCTO
             = "CREATE TABLE " + TABLA + "("
             + PROD_ID + " INT PRIMARY KEY,"
-            + PROD_ID + " TEXT,"
-            + PROD_ID + " NUMERIC,"
-            + PROD_ID + " TEXT"
+            + PROD_NOMBRE + " TEXT,"
+            + PROD_PRECIO + " NUMERIC,"
+            + PROD_RUTA_FOTO + " TEXT"
             + ") ;";
 
     public static final String ELIMINAR_TABLA_PRODUCTO = "DROP TABLE IF EXITS " + TABLA + ";";

@@ -49,7 +49,7 @@ public class Select {
                 case ProductoTabla.TABLA:
                     listaRetorno.add(
                             new Producto(
-                                    cLista.getColumnIndex(ProductoTabla.PROD_ID),
+                                    cLista.getInt(cLista.getColumnIndex(ProductoTabla.PROD_ID)),
                                     cLista.getString(cLista.getColumnIndex(ProductoTabla.PROD_NOMBRE)),
                                     cLista.getDouble(cLista.getColumnIndex(ProductoTabla.PROD_PRECIO)),
                                     cLista.getString(cLista.getColumnIndex(ProductoTabla.PROD_RUTA_FOTO)),
