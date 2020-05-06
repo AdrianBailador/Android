@@ -37,7 +37,7 @@ public class Select {
                 case ClienteTabla.TABLA:
                     listaRetorno.add(
                             new Cliente(
-                                    cLista.getColumnIndex(ClienteTabla.CLIE_ID),
+                                    cLista.getInt(cLista.getColumnIndex(ClienteTabla.CLIE_ID)),
                                     cLista.getString(cLista.getColumnIndex(ClienteTabla.CLIE_NOMBRE)),
                                     cLista.getString(cLista.getColumnIndex(ClienteTabla.CLIE_TELEFONO)),
                                     cLista.getString(cLista.getColumnIndex(ClienteTabla.CLIE_EMAIL)),

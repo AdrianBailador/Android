@@ -1,6 +1,8 @@
 package com.example.sistema_ventas.data.modelo;
 
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable {
 
 
     private int clie_id;
