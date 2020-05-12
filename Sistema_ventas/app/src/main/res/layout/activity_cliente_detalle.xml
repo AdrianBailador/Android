@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ClienteDetalleActivity">
+
+    <include layout="@layout/toolbar_layout"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="@string/nombre"
+                android:layout_margin="3dp"
+                android:background="@color/blanco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/acdTietNombre"
+                    android:inputType="text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:hint="@string/numero_telefono"
+                    android:layout_margin="3dp"
+                    android:background="@color/blanco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/acdTietTel"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:hint="@string/email"
+                        android:layout_margin="3dp"
+                        android:background="@color/blanco"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/acdTietMail"
+                            android:inputType="textEmailAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:hint="@string/direccion"
+                            android:layout_margin="3dp"
+                            android:background="@color/blanco"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/acdTietDireccion"
+                                android:inputType="text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputEditText>
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:id="@+id/acdLLAgregar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/acdBAgregar"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/button_circle_agregar"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+
+                    </Button>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:id="@+id/acdLLModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/acdBModificar"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/button_circle_modificar"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+
+                    </Button>
+
+
+                    <Button
+                        android:id="@+id/acdBEliminar"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/button_circle_eliminar"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+
+                    </Button>
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+

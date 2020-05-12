@@ -10,16 +10,6 @@ public class Producto implements Serializable {
     private String prod_ruta_foto;
     private boolean prod_seleccionado;
 
-    public Producto() {
-    }
-
-    public Producto(int prod_id, String prod_nombre, Double prod_precio, String prod_ruta_foto, boolean prod_seleccionado) {
-        this.prod_id = prod_id;
-        this.prod_nombre = prod_nombre;
-        this.prod_precio = prod_precio;
-        this.prod_ruta_foto = prod_ruta_foto;
-        this.prod_seleccionado = prod_seleccionado;
-    }
 
     public int getProd_id() {
         return prod_id;
@@ -60,4 +50,16 @@ public class Producto implements Serializable {
     public void setProd_seleccionado(boolean prod_seleccionado) {
         this.prod_seleccionado = prod_seleccionado;
     }
+
+    public Producto(int prod_id, String prod_nombre, Double prod_precio, String prod_ruta_foto, boolean prod_seleccionado) {
+        this.prod_id = prod_id;
+        this.prod_nombre = prod_nombre;
+        this.prod_precio = prod_precio;
+        this.prod_ruta_foto = prod_ruta_foto;
+        this.prod_seleccionado = prod_seleccionado;
+    }
+
+    public Producto() {
+    }
+
 }

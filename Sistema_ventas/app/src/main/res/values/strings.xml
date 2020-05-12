@@ -8,4 +8,9 @@
     <string name="nombre_item_producto">Nombre del producto</string>
     <string name="precio_item">Precio</string>
     <string name="precio_item_cero">0.0</string>
+    <string name="buscar_cliente">Buscar cliente</string>
+    <string name="nombre">Nombre</string>
+    <string name="numero_telefono">Numero telefono</string>
+    <string name="email">Correo electronico</string>
+    <string name="direccion">Direccion</string>
 </resources>

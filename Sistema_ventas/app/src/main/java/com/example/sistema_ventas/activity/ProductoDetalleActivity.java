@@ -105,7 +105,8 @@ public class ProductoDetalleActivity extends AppCompatActivity {
     public void agregarProducto(){
         int codigo = SessionPreferences.get(getApplicationContext()).getProducto();
 
-        Insert.registrar(getApplicationContext(),new Producto(codigo,nombre.getText().toString(),
+        Insert.registrar(getApplicationContext(),new Producto(codigo,
+                nombre.getText().toString(),
                 Double.parseDouble(precio.getText().toString()),
                 pathUri,false), ProductoTabla.TABLA);
 
