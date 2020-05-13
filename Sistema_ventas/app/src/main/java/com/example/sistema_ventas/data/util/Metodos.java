@@ -68,7 +68,7 @@ public static String convertirProductoListaATexto(List<Producto> lista){
 
 
 //Aqui le pasamos la cadena en formato lista
-public static List<Object> convertirProductoTextoALIsta(String cadena){
+public static List<Producto> convertirProductoTextoALIsta(String cadena){
         Gson gson = new Gson();
 
         Type lista = new TypeToken<List<Producto>>() {}.getType();

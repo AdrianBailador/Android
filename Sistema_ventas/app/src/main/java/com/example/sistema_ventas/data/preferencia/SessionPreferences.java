@@ -33,7 +33,7 @@ public class SessionPreferences {
 
     public void setProducto(int codigo){
         SharedPreferences.Editor objEdit = mPref.edit();
-        objEdit.putInt(PREF_PRODUCTO, codigo++ );
+        objEdit.putInt(PREF_PRODUCTO, codigo + 1 );
         objEdit.apply();
     }
 
@@ -44,7 +44,7 @@ public class SessionPreferences {
 
     public void setCliente(int codigo){
         SharedPreferences.Editor objEdit = mPref.edit();
-        objEdit.putInt(PREF_CLIENTE, codigo++ );
+        objEdit.putInt(PREF_CLIENTE, codigo + 1 );
         objEdit.apply();
     }
 
@@ -55,7 +55,7 @@ public class SessionPreferences {
 
     public void setVentaCabecera(int codigo){
         SharedPreferences.Editor objEdit = mPref.edit();
-        objEdit.putInt(PREF_VENTA_CABECERA, codigo++ );
+        objEdit.putInt(PREF_VENTA_CABECERA, codigo + 1 );
         objEdit.apply();
     }
 
@@ -67,7 +67,7 @@ public class SessionPreferences {
 
     public void setVentaDetalle(int codigo){
         SharedPreferences.Editor objEdit = mPref.edit();
-        objEdit.putInt(PREF_VENTA_DETALLE, codigo++ );
+        objEdit.putInt(PREF_VENTA_DETALLE, codigo + 1 );
         objEdit.apply();
     }
 

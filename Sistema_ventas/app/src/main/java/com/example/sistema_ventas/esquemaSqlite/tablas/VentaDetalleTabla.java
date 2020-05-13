@@ -15,8 +15,9 @@ public class VentaDetalleTabla {
     public static final String CREAR_TABLA_VENTA_DETALLE
             = " CREATE TABLE " + TABLA + " ("
             + VD_ID + " INT PRIMARY KEY,"
-            + VD_CANTIDAD + " TEXT,"
-            + VD_PRECIO + " TEXT,"
+            + VD_CANTIDAD + " INT,"
+            + VD_PRECIO + " NUMERIC,"
+            + VC_ID + " INT,"
             + PROD_NOMBRE + "TEXT,"
             + PROD_RUTA_FOTO + " TEXT);";
 

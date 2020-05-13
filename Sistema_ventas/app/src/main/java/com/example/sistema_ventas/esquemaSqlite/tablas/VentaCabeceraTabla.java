@@ -16,6 +16,7 @@ public class VentaCabeceraTabla {
             = " CREATE TABLE " + TABLA + " ("
             + VC_ID + " INT PRIMARY KEY,"
             + VC_FECHA + " TEXT,"
+            + VC_HORA + " TEXT,"
             + VC_COMENTARIO + " TEXT,"
             + VCLIE_NOMBRE + "TEXT );";
 

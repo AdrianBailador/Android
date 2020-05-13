@@ -59,6 +59,7 @@ public class VentaActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
+
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); //ocultar teclado al iniciar la acivity
 
         //cargamos el layout con la actividad
