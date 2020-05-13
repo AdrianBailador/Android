@@ -2,6 +2,7 @@ package com.example.sistema_ventas.data.util;
 
 import android.annotation.SuppressLint;
 
+import com.example.sistema_ventas.data.modelo.Producto;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -60,7 +61,7 @@ public class Metodos {
     public static  String getHora(){return new SimpleDateFormat("HH:mm").format(new Date()); }
     public static  String getFecha(){return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()); }
 
-public static String convertirProductoListaATexto(List<Object> lista){
+public static String convertirProductoListaATexto(List<Producto> lista){
         Gson gson = new Gson();
         return gson.toJson(lista);
 }
@@ -70,7 +71,7 @@ public static String convertirProductoListaATexto(List<Object> lista){
 public static List<Object> convertirProductoTextoALIsta(String cadena){
         Gson gson = new Gson();
 
-        Type lista = new TypeToken<List<Object>>() {}.getType();
+        Type lista = new TypeToken<List<Producto>>() {}.getType();
         return gson.fromJson(cadena,lista); //pasamos la cadena y adaptara el formato para esta lista
 }
 
