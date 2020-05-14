@@ -128,7 +128,7 @@ public class VentaActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), VentaNuevaActivity.class);
 
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_SINGLE_TOP);
-        intent.putExtra("lisProducto", Metodos.convertirProductoListaATexto(listaProductoSeleccionados));
+        intent.putExtra("listaProducto", Metodos.convertirProductoListaATexto(listaProductoSeleccionados));
 
         startActivityForResult(intent, 1);
     }

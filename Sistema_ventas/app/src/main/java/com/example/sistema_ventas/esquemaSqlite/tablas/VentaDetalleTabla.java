@@ -18,8 +18,8 @@ public class VentaDetalleTabla {
             + VD_CANTIDAD + " INT,"
             + VD_PRECIO + " NUMERIC,"
             + VC_ID + " INT,"
-            + PROD_NOMBRE + "TEXT,"
-            + PROD_RUTA_FOTO + " TEXT);";
+            + PROD_NOMBRE + " TEXT,"
+            + PROD_RUTA_FOTO + " TEXT );";
 
 
     public static final String ELIMINAR_TABLA_VENTA_DETALLE = "DROP TABLE IF EXISTS " + TABLA + ";";

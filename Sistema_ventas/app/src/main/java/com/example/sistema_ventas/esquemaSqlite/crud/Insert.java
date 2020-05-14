@@ -58,7 +58,7 @@ public class Insert {
                 values.put(VentaCabeceraTabla.VC_HORA, ventaCab.getVc_hora());
                 values.put(VentaCabeceraTabla.VC_COMENTARIO, ventaCab.getVc_comentario());
                 values.put(VentaCabeceraTabla.VC_MONTO, ventaCab.getVc_monto());
-                values.put(VentaCabeceraTabla.VCLIE_NOMBRE, ventaCab.getClie_nombre());
+                values.put(VentaCabeceraTabla.CLIE_NOMBRE, ventaCab.getClie_nombre());
 
                 db.insert(VentaCabeceraTabla.TABLA,VentaCabeceraTabla.VC_ID,values);
                 SessionPreferences.get(context).setVentaCabecera(ventaCab.getVc_id() );

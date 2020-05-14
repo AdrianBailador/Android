@@ -1,7 +1,6 @@
 package com.example.sistema_ventas.adaptador;
 
 
-import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -71,7 +70,7 @@ public class VentaItemRecycler extends RecyclerView.Adapter<VentaItemRecycler.Vi
             cantidad.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    
+
                 }
 
                 @Override
@@ -116,10 +115,10 @@ public class VentaItemRecycler extends RecyclerView.Adapter<VentaItemRecycler.Vi
             cantidad.setText(String.valueOf(productoVenta.getProd_cantidad()));
             precio.setText(String.valueOf(productoVenta.getProd_precio()));
             totalProducto.setText(String.valueOf(productoVenta.getProd_precio()));
-            nombre.setText(String.valueOf(productoVenta.getProd_cantidad()));
+            nombre.setText(productoVenta.getProd_nombre());
 
             if(productoVenta.getProd_ruta_foto().length() < 0 || productoVenta.getProd_ruta_foto().isEmpty()){
-                Picasso.get().load(R.drawable.caja_producto);
+                Picasso.get().load(R.drawable.caja_producto).into(imagen);
             }else{
                 Picasso.get().load(productoVenta.getProd_ruta_foto()).error(R.drawable.caja_producto_error).centerCrop().resize(65,65).into(imagen);
             }

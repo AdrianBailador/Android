@@ -132,7 +132,7 @@ public class Select {
                         String.valueOf(tempLista.getColumnIndex(VentaCabeceraTabla.VC_HORA)),
                         tempLista.getDouble(tempLista.getColumnIndex(VentaCabeceraTabla.VC_MONTO)),
                         String.valueOf(tempLista.getColumnIndex(VentaCabeceraTabla.VC_COMENTARIO)),
-                        String.valueOf(tempLista.getColumnIndex(VentaCabeceraTabla.VCLIE_NOMBRE))
+                        String.valueOf(tempLista.getColumnIndex(VentaCabeceraTabla.CLIE_NOMBRE))
 
                     );
             if (buscar.length() > 0) {

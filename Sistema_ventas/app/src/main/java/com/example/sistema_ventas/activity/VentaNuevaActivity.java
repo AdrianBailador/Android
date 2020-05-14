@@ -101,14 +101,10 @@ public class VentaNuevaActivity extends AppCompatActivity {
 
 
         @OnClick(R.id.avnBNuevo)
-
-                void clickNuevaVenta(){
+        void clickNuevaVenta(){
             if(listaProductoVenta.size() > 0) {
                 if (listaAutoCliente.getText().length() > 0) {
-
                     registrarVentaNueva();
-
-
                 } else {
                     mensaje.mensajeToas("Ingrese un cliente");
                 }
@@ -143,7 +139,7 @@ public class VentaNuevaActivity extends AppCompatActivity {
 
 
     private void cargarRecycler() {
-        adaptador= new VentaItemRecycler(listaProductoVenta,totalVenta);
+        adaptador = new VentaItemRecycler(listaProductoVenta,totalVenta);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
