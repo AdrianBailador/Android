@@ -1,2 +1,2 @@
 # Android
-Sistema de Ventas
+Application to make sales.
