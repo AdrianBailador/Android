@@ -87,7 +87,12 @@ public class Insert {
         for(ProductoVenta item : lista){
             codigo = SessionPreferences.get(context).getVentaDetalle();
             registrar(context, new VentaDetalle(codigo,
-                    item.getProd_cantidad(), item.getProd_precio_venta(),vc_id,item.getProd_nombre(),item.getProd_ruta_foto()),VentaDetalleTabla.TABLA);
+                    item.getProd_cantidad(),
+                    item.getProd_precio_venta(),
+                    vc_id,
+                    item.getProd_nombre(),
+                    item.getProd_ruta_foto()),
+                    VentaDetalleTabla.TABLA);
         }
     }
 }

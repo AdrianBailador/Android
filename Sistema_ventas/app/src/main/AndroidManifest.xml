@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.VentaNuevaActivity"></activity>
+        <activity android:name=".activity.VentaHistorialDetalleActivity"></activity>
+        <activity android:name=".activity.VentaNuevaActivity" />
         <activity android:name=".activity.ProductoDetalleActivity" />
         <activity android:name=".activity.ClienteDetalleActivity" />
         <activity android:name=".activity.VentaHistorialActivity" />
@@ -24,9 +25,9 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

@@ -18,4 +18,6 @@
     <string name="cantidad">Cantidad</string>
     <string name="precio">Precio</string>
     <string name="precio_cero">0</string>
+    <string name="fecha">Fecha</string>
+    <string name="hora">Hora</string>
 </resources>
