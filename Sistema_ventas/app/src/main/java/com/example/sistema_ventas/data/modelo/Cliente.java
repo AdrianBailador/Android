@@ -73,4 +73,11 @@ public class Cliente implements Serializable {
                 clie_email,clie_direccion
         });
     }
+    public Cliente(String cadenaLeida, String caracter){
+        this.clie_id = Integer.parseInt(Metodos.cadenaDescomponer(cadenaLeida,1,caracter));
+        this.clie_nombre = Metodos.cadenaDescomponer(cadenaLeida,2,caracter);
+        this.clie_num_tel = Metodos.cadenaDescomponer(cadenaLeida,3,caracter);
+        this.clie_email = Metodos.cadenaDescomponer(cadenaLeida,4,caracter);
+        this.clie_direccion = Metodos.cadenaDescomponer(cadenaLeida,5,caracter);
+    }
 }

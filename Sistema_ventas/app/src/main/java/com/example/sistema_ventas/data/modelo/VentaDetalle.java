@@ -77,7 +77,17 @@ public class VentaDetalle {
               vd_cantidad,
               vd_precio,
               vd_id,
+              prod_nombre,
               prod_ruta_foto
         });
+    }
+
+    public VentaDetalle(String cadenaLeida, String caracter){
+        this.vc_id = Integer.parseInt(Metodos.cadenaDescomponer(cadenaLeida,1,caracter));
+        this.vd_cantidad = Integer.parseInt(Metodos.cadenaDescomponer(cadenaLeida,2,caracter));
+        this.vd_precio = Double.parseDouble(Metodos.cadenaDescomponer(cadenaLeida,3,caracter));
+        this.vd_id = Integer.parseInt(Metodos.cadenaDescomponer(cadenaLeida,4,caracter));
+        this.prod_nombre = Metodos.cadenaDescomponer(cadenaLeida,5,caracter);
+        this.prod_ruta_foto = Metodos.cadenaDescomponer(cadenaLeida,6,caracter);
     }
 }

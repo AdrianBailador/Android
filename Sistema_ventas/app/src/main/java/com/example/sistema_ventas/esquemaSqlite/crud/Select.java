@@ -10,6 +10,7 @@ import com.example.sistema_ventas.data.modelo.Cliente;
 import com.example.sistema_ventas.data.modelo.Producto;
 import com.example.sistema_ventas.data.modelo.VentaCabecera;
 import com.example.sistema_ventas.data.modelo.VentaDetalle;
+import com.example.sistema_ventas.data.preferencia.SessionPreferences;
 import com.example.sistema_ventas.data.util.Metodos;
 import com.example.sistema_ventas.esquemaSqlite.ConexionSqliteHelper;
 import com.example.sistema_ventas.esquemaSqlite.tablas.ClienteTabla;
@@ -17,9 +18,12 @@ import com.example.sistema_ventas.esquemaSqlite.tablas.ProductoTabla;
 import com.example.sistema_ventas.esquemaSqlite.tablas.VentaCabeceraTabla;
 import com.example.sistema_ventas.esquemaSqlite.tablas.VentaDetalleTabla;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -133,7 +137,7 @@ public class Select {
 
         tempLista = db.rawQuery(query, new String[]{fecha});
         while (tempLista.moveToNext()) {
-            VentaCabecera item = new VentaCabecera (
+            VentaCabecera item = new VentaCabecera(
                     tempLista.getInt(tempLista.getColumnIndex(VentaCabeceraTabla.VC_ID)),
                     tempLista.getString(tempLista.getColumnIndex(VentaCabeceraTabla.VC_FECHA)),
                     tempLista.getString(tempLista.getColumnIndex(VentaCabeceraTabla.VC_HORA)),
@@ -141,7 +145,7 @@ public class Select {
                     tempLista.getString(tempLista.getColumnIndex(VentaCabeceraTabla.VC_COMENTARIO)),
                     tempLista.getString(tempLista.getColumnIndex(VentaCabeceraTabla.CLIE_NOMBRE))
 
-                    );
+            );
             if (buscar.length() > 0) {
 
                 if (item.getClie_nombre().length() >= buscar.length()) {
@@ -262,9 +266,91 @@ public class Select {
             osw.write(cadenaCompuesta.toString());
             osw.flush();
             osw.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public static void restaurar(Context context) {
+        String nombreDeTabla = null;
+        boolean bIngreso = true;
+        List<VentaCabecera> list = new ArrayList<>();
+        int contador = 0, numeroAnterior = 0;
+        File tarjeta = Environment.getExternalStorageDirectory();
+        File file = new File(tarjeta.getAbsolutePath(), "tienda.txt");
+
+        try {
+            FileInputStream oFile = new FileInputStream(file);
+                InputStreamReader archivo = new InputStreamReader(oFile);
+                BufferedReader br = new BufferedReader(archivo);
+                String linea = br.readLine();
+
+                while(linea !=null)
+
+                {
+                    bIngreso = linea.equals("/////" + ClienteTabla.TABLA.toUpperCase() + "/////") ||
+                            linea.equals("/////" + ProductoTabla.TABLA.toUpperCase() + "/////") ||
+                            linea.equals("/////" + VentaCabeceraTabla.TABLA.toUpperCase() + "/////") ||
+                            linea.equals("/////" + VentaDetalleTabla.TABLA.toUpperCase() + "/////");
+
+
+                    if (bIngreso) {
+                        nombreDeTabla = linea.equals("/////" + ClienteTabla.TABLA.toUpperCase() + "/////") ? ClienteTabla.TABLA :
+                                linea.equals("/////" + ProductoTabla.TABLA.toUpperCase() + "/////") ? ProductoTabla.TABLA :
+                                        linea.equals("/////" + VentaCabeceraTabla.TABLA.toUpperCase() + "/////") ? VentaCabeceraTabla.TABLA :
+                                                VentaDetalleTabla.TABLA;
+                    } else {
+                        switch (nombreDeTabla) {
+                            case ClienteTabla.TABLA:
+                                Cliente cliente = new Cliente(linea, "|");
+                                cliente.setClie_id(SessionPreferences.get(context).getCliente());
+                                Insert.registrar(context, cliente, ClienteTabla.TABLA);
+                                break;
+
+                            case ProductoTabla.TABLA:
+                                Producto producto = new Producto(linea, "|");
+                                producto.setProd_id(SessionPreferences.get(context).getProducto());
+                                Insert.registrar(context, producto, ProductoTabla.TABLA);
+                                break;
+
+                            case VentaCabeceraTabla.TABLA:
+                                VentaCabecera ventaCabecera = new VentaCabecera(linea, "|");
+                                ventaCabecera.setVc_id(SessionPreferences.get(context).getVentaCabecera());
+                                Insert.registrar(context, ventaCabecera, VentaCabeceraTabla.TABLA);
+                                list.add(ventaCabecera);
+                                break;
+
+                            case VentaDetalleTabla.TABLA:
+                                VentaDetalle ventaDetalle = new VentaDetalle(linea, "|");
+                                if (numeroAnterior == 0) {
+                                    numeroAnterior = ventaDetalle.getVd_id();
+                                    ventaDetalle.setVc_id(list.get(contador).getVc_id());
+                                } else {
+                                    if (numeroAnterior == ventaDetalle.getVd_id()) {
+                                        ventaDetalle.setVc_id(list.get(contador).getVc_id());
+                                    } else {
+                                        numeroAnterior = ventaDetalle.getVd_id();
+                                        contador += 1;
+                                        ventaDetalle.setVc_id(list.get(contador).getVc_id());
+                                    }
+                                }
+                                ventaDetalle.setVc_id(SessionPreferences.get(context).getVentaDetalle());
+                                Insert.registrar(context, ventaDetalle, VentaDetalleTabla.TABLA);
+                                break;
+                        }
+                    }
+                    linea = br.readLine();
+                }
+                br.close();
+                archivo.close();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+    }
 }
+
+
+
+
+
+

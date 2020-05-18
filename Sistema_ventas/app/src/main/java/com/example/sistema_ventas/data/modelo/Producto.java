@@ -74,4 +74,12 @@ public class Producto implements Serializable {
         });
     }
 
+    public Producto(String cadenaLeida, String  caracter){
+        this.prod_id = Integer.parseInt(Metodos.cadenaDescomponer(cadenaLeida,1,caracter));
+        this.prod_nombre = Metodos.cadenaDescomponer(cadenaLeida,2,caracter);
+        this. prod_precio = Double.parseDouble(Metodos.cadenaDescomponer(cadenaLeida,3,caracter));
+        this.prod_ruta_foto = Metodos.cadenaDescomponer(cadenaLeida,4,caracter);
+
+    }
+
 }

@@ -83,6 +83,8 @@ public class MenuActivity extends AppCompatActivity {
                 Toast.makeText(this,"Backup Correcto", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menuRestore:
+                Select.restaurar(getApplicationContext());
+                Toast.makeText(this,"Restauración exitosa", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
