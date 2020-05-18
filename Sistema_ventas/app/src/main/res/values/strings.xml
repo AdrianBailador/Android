@@ -20,4 +20,6 @@
     <string name="precio_cero">0</string>
     <string name="fecha">Fecha</string>
     <string name="hora">Hora</string>
+    <string name="backup">Backup</string>
+    <string name="restore">Restore</string>
 </resources>

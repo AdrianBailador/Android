@@ -1,5 +1,7 @@
 package com.example.sistema_ventas.data.modelo;
 
+import com.example.sistema_ventas.data.util.Metodos;
+
 public class VentaDetalle {
 
     private int vd_id;
@@ -67,5 +69,15 @@ public class VentaDetalle {
     }
 
     public VentaDetalle() {
+    }
+
+    public String componer(String caracter) {
+        return Metodos.cadenaComponer(caracter, new Object[]{
+              vc_id,
+              vd_cantidad,
+              vd_precio,
+              vd_id,
+              prod_ruta_foto
+        });
     }
 }

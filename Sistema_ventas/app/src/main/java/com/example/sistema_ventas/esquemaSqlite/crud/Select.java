@@ -3,6 +3,8 @@ package com.example.sistema_ventas.esquemaSqlite.crud;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
+import android.os.FileObserver;
 
 import com.example.sistema_ventas.data.modelo.Cliente;
 import com.example.sistema_ventas.data.modelo.Producto;
@@ -15,6 +17,10 @@ import com.example.sistema_ventas.esquemaSqlite.tablas.ProductoTabla;
 import com.example.sistema_ventas.esquemaSqlite.tablas.VentaCabeceraTabla;
 import com.example.sistema_ventas.esquemaSqlite.tablas.VentaDetalleTabla;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -177,4 +183,88 @@ public class Select {
             ));
         }
     }
+
+    //Cadena donde vamos a guardar los datos que tengamos en nuestras tablas
+
+    public static void backup(Context context) {
+        StringBuilder cadenaCompuesta = new StringBuilder();
+        con = new ConexionSqliteHelper(context);
+        db = con.getReadableDatabase();
+
+        for (String tablaSeleccionada : new String[]{ClienteTabla.TABLA, ProductoTabla.TABLA, VentaCabeceraTabla.TABLA, VentaDetalleTabla.TABLA}) {
+
+            cadenaCompuesta.append("/////").append(tablaSeleccionada.toUpperCase()).append("/////").append("\n");
+
+            Cursor cLista = db.query(tablaSeleccionada, null, null, null, null, null, null);
+
+
+            while (cLista.moveToNext()) {
+                switch (tablaSeleccionada) {
+                    case ClienteTabla.TABLA:
+                        cadenaCompuesta.append(
+                                new Cliente(
+                                        cLista.getInt(cLista.getColumnIndex(ClienteTabla.CLIE_ID)),
+                                        cLista.getString(cLista.getColumnIndex(ClienteTabla.CLIE_NOMBRE)),
+                                        cLista.getString(cLista.getColumnIndex(ClienteTabla.CLIE_TELEFONO)),
+                                        cLista.getString(cLista.getColumnIndex(ClienteTabla.CLIE_EMAIL)),
+                                        cLista.getString(cLista.getColumnIndex(ClienteTabla.CLIE_DIRECCION))
+                                ).componer("|")).append("\n");
+
+                        break;
+
+                    case ProductoTabla.TABLA:
+                        cadenaCompuesta.append(
+                                new Producto(
+                                        cLista.getInt(cLista.getColumnIndex(ProductoTabla.PROD_ID)),
+                                        cLista.getString(cLista.getColumnIndex(ProductoTabla.PROD_NOMBRE)),
+                                        cLista.getDouble(cLista.getColumnIndex(ProductoTabla.PROD_PRECIO)),
+                                        cLista.getString(cLista.getColumnIndex(ProductoTabla.PROD_RUTA_FOTO)),
+                                        false
+                                ).componer("|")).append("\n");
+
+                        break;
+                    case VentaCabeceraTabla.TABLA:
+                        cadenaCompuesta.append(
+                                new VentaCabecera(
+                                        cLista.getInt(cLista.getColumnIndex(VentaCabeceraTabla.VC_ID)),
+                                        cLista.getString(cLista.getColumnIndex(VentaCabeceraTabla.VC_FECHA)),
+                                        cLista.getString(cLista.getColumnIndex(VentaCabeceraTabla.VC_HORA)),
+                                        cLista.getDouble(cLista.getColumnIndex(VentaCabeceraTabla.VC_MONTO)),
+                                        cLista.getString(cLista.getColumnIndex(VentaCabeceraTabla.VC_COMENTARIO)),
+                                        cLista.getString(cLista.getColumnIndex(VentaCabeceraTabla.CLIE_NOMBRE))
+
+                                ).componer("|")).append("\n");
+                        break;
+                    case VentaDetalleTabla.TABLA:
+                        cadenaCompuesta.append(
+                                new VentaDetalle(
+                                        cLista.getInt(cLista.getColumnIndex(VentaDetalleTabla.VD_ID)),
+                                        cLista.getInt(cLista.getColumnIndex(VentaDetalleTabla.VD_CANTIDAD)),
+                                        cLista.getDouble(cLista.getColumnIndex(VentaDetalleTabla.VD_PRECIO)),
+                                        cLista.getInt(cLista.getColumnIndex(VentaDetalleTabla.VC_ID)),
+                                        cLista.getString(cLista.getColumnIndex(VentaDetalleTabla.PROD_NOMBRE)),
+                                        cLista.getString(cLista.getColumnIndex(VentaDetalleTabla.PROD_RUTA_FOTO))
+                                ).componer("|")).append("\n");
+                        break;
+
+                }
+            }
+
+        }
+
+        //Creamos un nuevo archivo
+        try {
+            String nombre = "tienda.txt";
+            File tarjeta = Environment.getExternalStorageDirectory();
+            File file = new File(tarjeta.getAbsolutePath(), nombre);
+
+            OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(file));
+            osw.write(cadenaCompuesta.toString());
+            osw.flush();
+            osw.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 }

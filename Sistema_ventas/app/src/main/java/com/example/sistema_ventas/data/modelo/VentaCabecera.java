@@ -1,5 +1,7 @@
 package com.example.sistema_ventas.data.modelo;
 
+import com.example.sistema_ventas.data.util.Metodos;
+
 import java.io.Serializable;
 
 public class VentaCabecera implements Serializable {
@@ -70,5 +72,16 @@ public class VentaCabecera implements Serializable {
     }
 
     public VentaCabecera() {
+    }
+
+    public String componer(String caracter){
+        return Metodos.cadenaComponer(caracter, new Object[]{
+                vc_id,
+                vc_fecha,
+                vc_hora,
+                vc_monto,
+                vc_comentario,
+                clie_nombre
+        });
     }
 }

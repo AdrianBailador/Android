@@ -1,5 +1,7 @@
 package com.example.sistema_ventas.data.modelo;
 
+import com.example.sistema_ventas.data.util.Metodos;
+
 import java.io.Serializable;
 
 public class Cliente implements Serializable {
@@ -61,5 +63,14 @@ public class Cliente implements Serializable {
 
     public void setClie_direccion(String clie_direccion) {
         this.clie_direccion = clie_direccion;
+    }
+
+    public String componer(String caracter){
+        return Metodos.cadenaComponer(caracter,new Object[]{
+                clie_id,
+                clie_nombre,
+                clie_num_tel,
+                clie_email,clie_direccion
+        });
     }
 }

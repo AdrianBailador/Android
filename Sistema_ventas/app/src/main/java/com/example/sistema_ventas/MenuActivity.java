@@ -3,6 +3,9 @@ package com.example.sistema_ventas;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 
 import com.example.sistema_ventas.activity.ClienteActivity;
@@ -10,6 +13,7 @@ import com.example.sistema_ventas.activity.ProductoActivity;
 import com.example.sistema_ventas.activity.VentaActivity;
 import com.example.sistema_ventas.activity.VentaHistorialActivity;
 import com.example.sistema_ventas.esquemaSqlite.ConexionSqliteHelper;
+import com.example.sistema_ventas.esquemaSqlite.crud.Select;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -63,6 +67,25 @@ public class MenuActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menuBackup:
+                Select.backup(getApplicationContext());
+                Toast.makeText(this,"Backup Correcto", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuRestore:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -1,5 +1,8 @@
 package com.example.sistema_ventas.data.modelo;
 
+import com.example.sistema_ventas.data.util.Metodos;
+
+import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 public class Producto implements Serializable {
@@ -60,6 +63,15 @@ public class Producto implements Serializable {
     }
 
     public Producto() {
+    }
+
+    public String componer(String caracter){
+        return Metodos.cadenaComponer(caracter,new Object[]{
+                prod_id,
+                prod_nombre,
+                prod_precio,
+                prod_ruta_foto
+        });
     }
 
 }
