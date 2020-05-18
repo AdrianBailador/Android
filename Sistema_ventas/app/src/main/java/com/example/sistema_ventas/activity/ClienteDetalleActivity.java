@@ -106,39 +106,51 @@ import butterknife.OnClick;
 
         @OnClick(R.id.acdBAgregar)
         public void clickAgregar(){
-            int codigo = SessionPreferences.get(getApplicationContext()).getCliente();
 
-            Insert.registrar(getApplicationContext(),
-                    new Cliente(
-                            codigo,
-                            nombre.getText().toString(),
-                            telefono.getText().toString(),
-                            email.getText().toString(),
-                            direccion.getText().toString()),
-                            ClienteTabla.TABLA);
+            if(nombre.getText().length()>0) {
+                int codigo = SessionPreferences.get(getApplicationContext()).getCliente();
 
-            bModificado = true;
-            mensaje.mensajeToasGuardar();
-            cargarVista(new Cliente(0,"","","",""));
+                Insert.registrar(getApplicationContext(),
+                        new Cliente(
+                                codigo,
+                                nombre.getText().toString(),
+                                telefono.getText().toString(),
+                                email.getText().toString(),
+                                direccion.getText().toString()),
+                        ClienteTabla.TABLA);
+
+                bModificado = true;
+                mensaje.mensajeToasGuardar();
+                cargarVista(new Cliente(0, "", "", "", ""));
+            }else {
+                mensaje.mensajeToas("Ingrese un nombre");
+                nombre.requestFocus();
+            }
 
         }
 
         @OnClick(R.id.acdBModificar)
         public void clickModificar(){
-            Update.actualizar(getApplicationContext(),
+
+            if(nombre.getText().length()>0) {
+                Update.actualizar(getApplicationContext(),
 
 
-                    new Cliente(
-                            cliente.getClie_id(),
-                            nombre.getText().toString(),
-                            telefono.getText().toString(),
-                            email.getText().toString(),
-                            direccion.getText().toString()),
-                             ClienteTabla.TABLA);
+                        new Cliente(
+                                cliente.getClie_id(),
+                                nombre.getText().toString(),
+                                telefono.getText().toString(),
+                                email.getText().toString(),
+                                direccion.getText().toString()),
+                        ClienteTabla.TABLA);
 
-            bModificado = true;
-            mensaje.mensajeToasGuardar();
-           salirActivity();
+                bModificado = true;
+                mensaje.mensajeToasGuardar();
+                salirActivity();
+            }else{
+                mensaje.mensajeToas("Ingrese un nombre");
+                nombre.requestFocus();
+            }
         }
 
 

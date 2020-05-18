@@ -61,7 +61,7 @@ public class VentaHistorialDetalleActivity extends AppCompatActivity {
    List<VentaDetalle> listaDetalle = new ArrayList<>();
 
 
-   boolean bCancelado;
+   boolean bCancelado = false;
    VentaCabecera ventaCabecera;
 
 
