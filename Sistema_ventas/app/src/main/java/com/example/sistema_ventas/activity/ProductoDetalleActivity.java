@@ -103,34 +103,65 @@ public class ProductoDetalleActivity extends AppCompatActivity {
 
     @OnClick(R.id.apdBAgregar)
     public void agregarProducto(){
-        int codigo = SessionPreferences.get(getApplicationContext()).getProducto();
+        if(nombre.getText().length()>0){
+            if(precio.getText().length()>0) {
 
-        Insert.registrar(getApplicationContext(),new Producto(codigo,nombre.getText().toString(),
-                Double.parseDouble(precio.getText().toString()),
-                pathUri,false), ProductoTabla.TABLA);
+                int codigo = SessionPreferences.get(getApplicationContext()).getProducto();
+
+                Insert.registrar(getApplicationContext(), new Producto(codigo,
+                        nombre.getText().toString(),
+                        Double.parseDouble(precio.getText().toString()),
+                        pathUri, false), ProductoTabla.TABLA);
 
 
-        mensaje.mensajeToasGuardar();
-        bModificado = true;
+                mensaje.mensajeToasGuardar();
+                bModificado = true;
 
-        nombre.setText("");
-        precio.setText("");
-        pathUri = "";
-        Picasso.get().load(R.drawable.caja_producto).resize(180,160).centerCrop().into(imagen);
-        nombre.requestFocus();
+                nombre.setText("");
+                precio.setText("");
+                pathUri = "";
+                Picasso.get().load(R.drawable.caja_producto).resize(180, 160).centerCrop().into(imagen);
+                nombre.requestFocus();
+            }else {
+                mensaje.mensajeToas("Debe ingresar un precio");
+                precio.requestFocus();
+
+            }
+            }else{
+
+                mensaje.mensajeToas("Debe ingresar un nombre");
+                nombre.requestFocus();
+
+            }
     }
 
     @OnClick(R.id.apdBModificar)
     public void modificarProducto(){
-        Update.actualizar(getApplicationContext(),
-                new Producto(producto.getProd_id(),
-                        nombre.getText().toString(),
-                        Double.parseDouble(precio.getText().toString()),
-                        pathUri,false), ProductoTabla.TABLA);
 
-        mensaje.mensajeToasGuardar();
-        bModificado = true;
-        salirActivity();
+                if(nombre.getText().length()>0){
+                    if(precio.getText().length()>0){
+
+
+                             Update.actualizar(getApplicationContext(),
+                                  new Producto(producto.getProd_id(),
+                                       nombre.getText().toString(),
+                                     Double.parseDouble(precio.getText().toString()),
+                                     pathUri,false), ProductoTabla.TABLA);
+
+                                        mensaje.mensajeToasGuardar();
+                                            bModificado = true;
+                                             salirActivity();
+                    }else {
+                        mensaje.mensajeToas("Debe ingresar un precio");
+                        precio.requestFocus();
+
+                    }
+                }else{
+
+                    mensaje.mensajeToas("Debe ingresar un nombre");
+                    nombre.requestFocus();
+
+                }
     }
 
 

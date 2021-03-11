@@ -1,6 +1,10 @@
 package com.example.sistema_ventas.data.modelo;
 
-public class VentaCabecera {
+import com.example.sistema_ventas.data.util.Metodos;
+
+import java.io.Serializable;
+
+public class VentaCabecera implements Serializable {
 
     private int vc_id;
     private String vc_fecha;
@@ -68,5 +72,25 @@ public class VentaCabecera {
     }
 
     public VentaCabecera() {
+    }
+
+    public String componer(String caracter){
+        return Metodos.cadenaComponer(caracter, new Object[]{
+                vc_id,
+                vc_fecha,
+                vc_hora,
+                vc_monto,
+                vc_comentario,
+                clie_nombre
+        });
+    }
+
+    public VentaCabecera(String cadenaLeida, String caracter){
+        this.vc_id = Integer.parseInt(Metodos.cadenaDescomponer(cadenaLeida,1,caracter));
+        this.vc_fecha = Metodos.cadenaDescomponer(cadenaLeida,2,caracter);
+        this.vc_hora = Metodos.cadenaDescomponer(cadenaLeida,3,caracter);
+        this.vc_monto = Double.parseDouble(Metodos.cadenaDescomponer(cadenaLeida,4,caracter));
+        this.vc_comentario = Metodos.cadenaDescomponer(cadenaLeida,5,caracter);
+        this.clie_nombre = Metodos.cadenaDescomponer(cadenaLeida,6,caracter);
     }
 }

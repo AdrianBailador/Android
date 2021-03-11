@@ -15,13 +15,14 @@ public class ClienteTabla {
 
     public static final String CREAR_TABLA_CLIENTE =
             "CREATE TABLE " + TABLA + "("
-            + CLIE_ID + " INT,"
+            + CLIE_ID + " INT PRIMARY KEY,"
             + CLIE_NOMBRE + " TEXT,"
             + CLIE_TELEFONO + " TEXT,"
             + CLIE_EMAIL + " TEXT,"
-            + CLIE_DIRECCION + "TEXT "
-            +");";
+            + CLIE_DIRECCION + " TEXT "
+            + ") ;";
 
     public static final String ELIMINAR_TABLA_CLIENTE = "DROP TABLE IF EXISTS" + TABLA + ";";
 
 }
+

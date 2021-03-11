@@ -121,6 +121,6 @@ public class ProductoActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (resultCode == Activity.RESULT_OK) cargarLista();
+        if (resultCode == Activity.RESULT_OK)cargarLista();
     }
 }

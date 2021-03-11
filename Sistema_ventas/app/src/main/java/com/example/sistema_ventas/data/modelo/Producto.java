@@ -1,5 +1,8 @@
 package com.example.sistema_ventas.data.modelo;
 
+import com.example.sistema_ventas.data.util.Metodos;
+
+import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 public class Producto implements Serializable {
@@ -10,16 +13,6 @@ public class Producto implements Serializable {
     private String prod_ruta_foto;
     private boolean prod_seleccionado;
 
-    public Producto() {
-    }
-
-    public Producto(int prod_id, String prod_nombre, Double prod_precio, String prod_ruta_foto, boolean prod_seleccionado) {
-        this.prod_id = prod_id;
-        this.prod_nombre = prod_nombre;
-        this.prod_precio = prod_precio;
-        this.prod_ruta_foto = prod_ruta_foto;
-        this.prod_seleccionado = prod_seleccionado;
-    }
 
     public int getProd_id() {
         return prod_id;
@@ -60,4 +53,33 @@ public class Producto implements Serializable {
     public void setProd_seleccionado(boolean prod_seleccionado) {
         this.prod_seleccionado = prod_seleccionado;
     }
+
+    public Producto(int prod_id, String prod_nombre, Double prod_precio, String prod_ruta_foto, boolean prod_seleccionado) {
+        this.prod_id = prod_id;
+        this.prod_nombre = prod_nombre;
+        this.prod_precio = prod_precio;
+        this.prod_ruta_foto = prod_ruta_foto;
+        this.prod_seleccionado = prod_seleccionado;
+    }
+
+    public Producto() {
+    }
+
+    public String componer(String caracter){
+        return Metodos.cadenaComponer(caracter,new Object[]{
+                prod_id,
+                prod_nombre,
+                prod_precio,
+                prod_ruta_foto
+        });
+    }
+
+    public Producto(String cadenaLeida, String  caracter){
+        this.prod_id = Integer.parseInt(Metodos.cadenaDescomponer(cadenaLeida,1,caracter));
+        this.prod_nombre = Metodos.cadenaDescomponer(cadenaLeida,2,caracter);
+        this. prod_precio = Double.parseDouble(Metodos.cadenaDescomponer(cadenaLeida,3,caracter));
+        this.prod_ruta_foto = Metodos.cadenaDescomponer(cadenaLeida,4,caracter);
+
+    }
+
 }

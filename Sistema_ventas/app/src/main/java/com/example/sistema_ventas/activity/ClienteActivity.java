@@ -34,11 +34,20 @@ import java.util.List;
 
 public class ClienteActivity extends AppCompatActivity {
 
+
     @BindView(R.id.acRvCliente)
     RecyclerView recyclerView;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
+
+    @BindView(R.id.acRvCliente)
+    RecyclerView recyclerView;
+
 
     @BindView(R.id.acEtBuscarCliente)
     EditText buscador;
@@ -64,8 +73,15 @@ public class ClienteActivity extends AppCompatActivity {
         cargarLista();
 
         buscador.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int before, int count) {
+
+
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
 
             }
 

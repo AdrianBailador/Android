@@ -10,12 +10,12 @@ public class ProductoTabla {
     public static final String PROD_RUTA_FOTO = "prod_ruta_foto";
 
 
-    public static final String CREAR_TABLA_PRODUCTO
-            = "CREATE TABLE " + TABLA + "("
+    public static final String CREAR_TABLA_PRODUCTO =
+             "CREATE TABLE " + TABLA + "("
             + PROD_ID + " INT PRIMARY KEY,"
             + PROD_NOMBRE + " TEXT,"
             + PROD_PRECIO + " NUMERIC,"
-            + PROD_RUTA_FOTO + " TEXT"
+            + PROD_RUTA_FOTO + " TEXT "
             + ") ;";
 
     public static final String ELIMINAR_TABLA_PRODUCTO = "DROP TABLE IF EXITS " + TABLA + ";";
