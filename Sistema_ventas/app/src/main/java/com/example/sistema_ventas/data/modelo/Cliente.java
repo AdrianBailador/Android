@@ -1,6 +1,8 @@
 package com.example.sistema_ventas.data.modelo;
 
+
 import com.example.sistema_ventas.data.util.Metodos;
+
 
 import java.io.Serializable;
 

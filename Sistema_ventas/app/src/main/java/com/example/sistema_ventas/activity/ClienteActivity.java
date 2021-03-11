@@ -34,6 +34,13 @@ import java.util.List;
 
 public class ClienteActivity extends AppCompatActivity {
 
+
+    @BindView(R.id.acRvCliente)
+    RecyclerView recyclerView;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -67,9 +74,14 @@ public class ClienteActivity extends AppCompatActivity {
 
         buscador.addTextChangedListener(new TextWatcher() {
 
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int before, int count) {
+
+
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
 
             }
 
@@ -83,6 +95,7 @@ public class ClienteActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     @OnClick(R.id.acFabNuevoCliente)

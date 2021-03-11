@@ -13,10 +13,15 @@
         android:roundIcon="@mipmap/ic_icon_app_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".activity.ProductoDetalleActivity"></activity>
+        <activity android:name=".activity.ClienteDetalleActivity"></activity>
+
         <activity android:name=".activity.VentaHistorialDetalleActivity"></activity>
         <activity android:name=".activity.VentaNuevaActivity" />
         <activity android:name=".activity.ProductoDetalleActivity" />
         <activity android:name=".activity.ClienteDetalleActivity" />
+
         <activity android:name=".activity.VentaHistorialActivity" />
         <activity android:name=".activity.VentaActivity" />
         <activity android:name=".activity.ClienteActivity" />

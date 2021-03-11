@@ -42,11 +42,20 @@ import butterknife.OnClick;
         @BindView(R.id.acdTietTel)
         EditText telefono;
         @BindView(R.id.acdTietMail)
+
+        EditText mail;
+
         EditText email;
+
         @BindView(R.id.acdTietNombre)
         EditText nombre;
         @BindView(R.id.acdTietDireccion)
         EditText direccion;
+
+
+
+        ImageView imagen;
+
 
         @BindView(R.id.toolbar)
         Toolbar toolbar;
@@ -107,6 +116,22 @@ import butterknife.OnClick;
         @OnClick(R.id.acdBAgregar)
         public void clickAgregar(){
 
+            int codigo = SessionPreferences.get(getApplicationContext()).getCliente();
+
+            Insert.registrar(getApplicationContext(),
+                    new Cliente(
+                            codigo,
+                            nombre.getText().toString(),
+                            telefono.getText().toString(),
+                            mail.getText().toString(),
+                            direccion.getText().toString()),
+                            ClienteTabla.TABLA);
+
+            bModificado = true;
+            mensaje.mensajeToasGuardar();
+            cargarVista(new Cliente(0,"","","",""));
+
+
             if(nombre.getText().length()>0) {
                 int codigo = SessionPreferences.get(getApplicationContext()).getCliente();
 
@@ -127,10 +152,27 @@ import butterknife.OnClick;
                 nombre.requestFocus();
             }
 
+
         }
 
         @OnClick(R.id.acdBModificar)
         public void clickModificar(){
+
+            Update.actualizar(getApplicationContext(),
+
+
+                    new Cliente(
+                            cliente.getClie_id(),
+                            nombre.getText().toString(),
+                            telefono.getText().toString(),
+                            mail.getText().toString(),
+                            direccion.getText().toString()),
+                             ClienteTabla.TABLA);
+
+            bModificado = true;
+            mensaje.mensajeToasGuardar();
+           salirActivity();
+
 
             if(nombre.getText().length()>0) {
                 Update.actualizar(getApplicationContext(),
@@ -151,18 +193,28 @@ import butterknife.OnClick;
                 mensaje.mensajeToas("Ingrese un nombre");
                 nombre.requestFocus();
             }
+
         }
 
 
         @OnClick(R.id.acdBEliminar)
         public void clickEliminar(){
+
+            new AlertDialog.Builder(this).setTitle("Cliente").setMessage("¿Desea eliminar el cliente").setIcon(android.R.drawable.ic_dialog_alert)
+
             new AlertDialog.Builder(this).setTitle("Cliente").setMessage("¿Desea eliminar el cliente?").setIcon(android.R.drawable.ic_dialog_alert)
+
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Delete.eliminar(getApplicationContext(),cliente.getClie_id(),ClienteTabla.TABLA);
+
+                            mensaje.mensajeToasEliminar();
+                            bModificado = true;
+
                             bModificado = true;
                             mensaje.mensajeToasEliminar();
+
                             salirActivity();
 
                         }
@@ -178,9 +230,29 @@ import butterknife.OnClick;
 
             nombre.setText(cliente.getClie_nombre());
             telefono.setText(cliente.getClie_num_tel());
+
+            mail.setText(cliente.getClie_email());
+            direccion.setText(cliente.getClie_direccion());
+        }
+
+        void salirActivity(){
+            if(bModificado){
+                //Intent intent = new Intent();
+                setResult(Activity.RESULT_OK,new Intent());
+            }
+            finish();
+        }
+
+        @Override
+        public void onBackPressed() {
+            salirActivity();
+        }
+
+
             email.setText(cliente.getClie_email());
             direccion.setText(cliente.getClie_direccion());
         }
+
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
@@ -192,6 +264,8 @@ import butterknife.OnClick;
                     return super.onOptionsItemSelected(item);
             }
         }
+
+
 
         @Override
         public void onBackPressed() {
@@ -209,7 +283,8 @@ import butterknife.OnClick;
 
 
 
-    }
+
+   }
 
 
 
